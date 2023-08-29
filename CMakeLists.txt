@@ -37,4 +37,10 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+install(
+    DIRECTORY description/meshes
+    DESTINATION share/${PROJECT_NAME}/description
+)
+
+
 ament_package()
