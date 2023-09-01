@@ -1,0 +1,4 @@
+Für rviz aufruf:
+
+rviz2 -d src/brokk/config/view_brokk.rviz 
+

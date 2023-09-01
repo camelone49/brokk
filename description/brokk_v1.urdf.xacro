@@ -17,13 +17,15 @@
     <origin xyz="0 0 0.010" rpy="0 0 0"/>
   </joint>
 
+  <!--<mesh filename="$(find brokk)/description/meshes/turtlebot_improv" scale="0.0025 0.0025 0.0025"/> -->
   <!--"package://brokk/description/meshes/turtlebot_improv.stl"-->
 
   <link name="base_link">
     <visual>
       <origin xyz="-0.064 0 -0.09" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="$(find brokk)/description/meshes/turtlebot_improv" scale="0.0025 0.0025 0.0025"/>
+        <!--<mesh filename="$(find src)/brokk/description/meshes/turtlebot_improv.stl" scale="0.0025 0.0025 0.0025"/> -->
+        <mesh filename="package://brokk/description//meshes/turtlebot_improv.stl" scale="0.0025 0.0025 0.0025"/>
       </geometry>
       <material name="light_black"/>
     </visual>

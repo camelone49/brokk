@@ -39,7 +39,7 @@ install(
 
 install(
     DIRECTORY description/meshes
-    DESTINATION share/${PROJECT_NAME}/description
+    DESTINATION share/${PROJECT_NAME}/description/meshes
 )
 
 
