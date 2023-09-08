@@ -1,0 +1,6 @@
+<robot file="brokk.dae">
+  <Manipulator name="brokk_arm">
+    <base>brokk_base</base>
+    <effector>brokk_tip</effector>
+  </Manipulator>
+</robot>
