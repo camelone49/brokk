@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot name="brokk_vH" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:property name="joint_damping" value="100"/>
+  <xacro:property name="PI" value="3.1415926535897931"/>
+  <xacro:property name="mass" value="1" /> <!-- arbitrary value for mass -->
+  <xacro:property name="width" value="0.1" /> <!-- Square dimensions (widthxwidth) of beams -->
+  <xacro:property name="height1" value="2" /> <!-- Link 1 -->
+  <xacro:property name="height2" value="1" /> <!-- Link 2 -->
+  <xacro:property name="height3" value="1" /> <!-- Link 3 -->
+
+  <xacro:property name="r200_cam_rgb_px" value="0.005"/>
+  <xacro:property name="r200_cam_rgb_py" value="0.018"/>
+  <xacro:property name="r200_cam_rgb_pz" value="0.013"/>
+  <xacro:property name="r200_cam_depth_offset" value="0.01"/>
+
+    <!--constant things-->
+  <xacro:macro name="brokk_arm" params="prefix joint_limited
+    brokk_base_lower_limit:=${0.152}     brokk_base_upper_limit:=${2.983}
+    brokk_body1_lower_limit:=${0.2513}    brokk_body1_upper_limit:=${2.2617}
+    brokk_body2_lower_limit:=${0.076}    brokk_body2_upper_limit:=${1.444}
+    brokk_body3_lower_limit:=${0.096}    brokk_body3_upper_limit:=${1.824}
+    brokk_body4_lower_limit:=${0.128}    brokk_body4_upper_limit:=${2.4367}
+    safety_limits:=true safety_pos_margin:=0.15
+    brokk_arm_vel_limit:=50.0
+    k_velocity :=1.0
+    description_pkg:='brokk_arm_description'">
+
+  <link name="base_footprint"/>  <!--world footprint-->
+
+  <link name="base_link">       <!--robot base??-->
+  <visual>
+        <origin xyz="0.05 0 0" rpy="0 0 0" />
+        <geometry>
+            <mesh filename="package://brokk/description/brokk_hishversion/meshfiles/legs_final2.dae" />
+        </geometry>
+        <material name="LightGrey">
+            <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+    </visual>
+
+    <collision>
+        <origin xyz="-0.064 0 0.047" rpy="0 0 0"/>
+        <geometry>
+            <mesh scale="0.0011 0.001 0.001" filename="package://brokk/description/brokk_hishversion/meshfiles/legs.stl" />
+        </geometry>
+    </collision>
+
+    </link> <!--robot base??-->
+    <link name="brokk_base">
+        <visual>
+            <origin xyz="0 0 0.0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://brokk/description/brokk_hishversion/meshfiles/base_final2.dae" />
+            </geometry>
+            <material name="LightGrey">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>      
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh scale="0.001 0.001 0.001"  filename="package://brokk/description/brokk_hishversion/meshfiles/base.stl" />
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="2.34"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+
+    </link>
+
+    <joint name="brokk_base_joint" type="revolute"> <!--not really sure which joint exactly-->
+      <parent link="base_footprint" />
+      <child link = "base_link" />
+      <origin xyz="0 0.0 0.59" rpy="0.0 0.0 1.57" />
+      <axis xyz="0 0 -1" />
+      <limit effort="100.0" lower="${brokk_base_lower_limit}" upper="${brokk_base_upper_limit}" velocity="${brokk_arm_vel_limit}"/>
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
