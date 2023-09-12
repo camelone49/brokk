@@ -42,5 +42,4 @@ install(
     DESTINATION share/${PROJECT_NAME}/description/meshes
 )
 
-
 ament_package()

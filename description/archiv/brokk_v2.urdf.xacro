@@ -1,0 +1,1775 @@
+<?xml version="1.0" ?>
+
+
+<robot name="brokk_v2" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find brokk_description)/urdf/common_properties.xacro"/>
+  <xacro:include filename="$(find brokk_description)/urdf/model_gazebo.xacro"/>
+
+  <xacro:property name="r200_cam_rgb_px" value="0.005"/>
+  <xacro:property name="r200_cam_rgb_py" value="0.018"/>
+  <xacro:property name="r200_cam_rgb_pz" value="0.013"/>
+  <xacro:property name="r200_cam_depth_offset" value="0.01"/>
+  
+    <link name="base_link">
+    </link>
+  
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <link name="base_footprint"/>
+  
+  <joint name="track_creator__base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="track_creator__base_link"/>
+    <origin xyz="0 0 0.1"/>
+  </joint>
+  
+  <joint name="track_creator__drum_joint1" type="fixed">
+    <parent link="track_creator__base_link"/>
+    <child link="track_creator__drum1"/>
+    <origin xyz="0.28    0.22    0.07099" rpy="1.57079 0      0"/>
+    <axis xyz="0  0 -1"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__drum_joint2" type="fixed">
+    <parent link="track_creator__base_link"/>
+    <child link="track_creator__drum2"/>
+    <origin xyz="0.28    -0.22     0.07099" rpy="1.57079 0      0"/>
+    <axis xyz="0  0 -1"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__drum_joint3" type="fixed">
+    <parent link="track_creator__base_link"/>
+    <child link="track_creator__drum3"/>
+    <origin xyz="-0.28     0.22     0.07099" rpy="1.57079 0      0"/>
+    <axis xyz="0  0 -1"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__drum_joint4" type="fixed">
+    <parent link="track_creator__base_link"/>
+    <child link="track_creator__drum4"/>
+    <origin xyz="-0.28    -0.22     0.07099" rpy="1.57079 0      0"/>
+    <axis xyz="0  0 -1"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint1" type="fixed">
+    <parent link="track_creator__right_pad1"/>
+    <child link="track_creator__right_pad2"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint2" type="fixed">
+    <parent link="track_creator__right_pad2"/>
+    <child link="track_creator__right_pad3"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint3" type="fixed">
+    <parent link="track_creator__right_pad3"/>
+    <child link="track_creator__right_pad4"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint4" type="fixed">
+    <parent link="track_creator__right_pad4"/>
+    <child link="track_creator__right_pad5"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint5" type="fixed">
+    <parent link="track_creator__right_pad5"/>
+    <child link="track_creator__right_pad6"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint6" type="fixed">
+    <parent link="track_creator__right_pad6"/>
+    <child link="track_creator__right_pad7"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint7" type="fixed">
+    <parent link="track_creator__right_pad7"/>
+    <child link="track_creator__right_pad8"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint8" type="fixed">
+    <parent link="track_creator__right_pad8"/>
+    <child link="track_creator__right_pad9"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint9" type="fixed">
+    <parent link="track_creator__right_pad9"/>
+    <child link="track_creator__right_pad10"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.51687  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint10" type="fixed">
+    <parent link="track_creator__right_pad10"/>
+    <child link="track_creator__right_pad11"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint11" type="fixed">
+    <parent link="track_creator__right_pad11"/>
+    <child link="track_creator__right_pad12"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint12" type="fixed">
+    <parent link="track_creator__right_pad12"/>
+    <child link="track_creator__right_pad13"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint13" type="fixed">
+    <parent link="track_creator__right_pad13"/>
+    <child link="track_creator__right_pad14"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint14" type="fixed">
+    <parent link="track_creator__right_pad14"/>
+    <child link="track_creator__right_pad15"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint15" type="fixed">
+    <parent link="track_creator__right_pad15"/>
+    <child link="track_creator__right_pad16"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint16" type="fixed">
+    <parent link="track_creator__right_pad16"/>
+    <child link="track_creator__right_pad17"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint17" type="fixed">
+    <parent link="track_creator__right_pad17"/>
+    <child link="track_creator__right_pad18"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint18" type="fixed">
+    <parent link="track_creator__right_pad18"/>
+    <child link="track_creator__right_pad19"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint19" type="fixed">
+    <parent link="track_creator__right_pad19"/>
+    <child link="track_creator__right_pad20"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint20" type="fixed">
+    <parent link="track_creator__right_pad20"/>
+    <child link="track_creator__right_pad21"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint21" type="fixed">
+    <parent link="track_creator__right_pad21"/>
+    <child link="track_creator__right_pad22"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint22" type="fixed">
+    <parent link="track_creator__right_pad22"/>
+    <child link="track_creator__right_pad23"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint23" type="fixed">
+    <parent link="track_creator__right_pad23"/>
+    <child link="track_creator__right_pad24"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint24" type="fixed">
+    <parent link="track_creator__right_pad24"/>
+    <child link="track_creator__right_pad25"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.51687  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint25" type="fixed">
+    <parent link="track_creator__right_pad25"/>
+    <child link="track_creator__right_pad26"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint26" type="fixed">
+    <parent link="track_creator__right_pad26"/>
+    <child link="track_creator__right_pad27"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint27" type="fixed">
+    <parent link="track_creator__right_pad27"/>
+    <child link="track_creator__right_pad28"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint28" type="fixed">
+    <parent link="track_creator__right_pad28"/>
+    <child link="track_creator__right_pad29"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint29" type="fixed">
+    <parent link="track_creator__right_pad29"/>
+    <child link="track_creator__right_pad30"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint30" type="fixed">
+    <parent link="track_creator__right_pad30"/>
+    <child link="track_creator__right_pad31"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__right_pad_joint31" type="fixed">
+    <parent link="track_creator__right_pad31"/>
+    <child link="track_creator__right_pad1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint1" type="fixed">
+    <parent link="track_creator__left_pad1"/>
+    <child link="track_creator__left_pad2"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint2" type="fixed">
+    <parent link="track_creator__left_pad2"/>
+    <child link="track_creator__left_pad3"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint3" type="fixed">
+    <parent link="track_creator__left_pad3"/>
+    <child link="track_creator__left_pad4"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint4" type="fixed">
+    <parent link="track_creator__left_pad4"/>
+    <child link="track_creator__left_pad5"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint5" type="fixed">
+    <parent link="track_creator__left_pad5"/>
+    <child link="track_creator__left_pad6"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint6" type="fixed">
+    <parent link="track_creator__left_pad6"/>
+    <child link="track_creator__left_pad7"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint7" type="fixed">
+    <parent link="track_creator__left_pad7"/>
+    <child link="track_creator__left_pad8"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint8" type="fixed">
+    <parent link="track_creator__left_pad8"/>
+    <child link="track_creator__left_pad9"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint9" type="fixed">
+    <parent link="track_creator__left_pad9"/>
+    <child link="track_creator__left_pad10"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.51687  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint10" type="fixed">
+    <parent link="track_creator__left_pad10"/>
+    <child link="track_creator__left_pad11"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint11" type="fixed">
+    <parent link="track_creator__left_pad11"/>
+    <child link="track_creator__left_pad12"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint12" type="fixed">
+    <parent link="track_creator__left_pad12"/>
+    <child link="track_creator__left_pad13"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint13" type="fixed">
+    <parent link="track_creator__left_pad13"/>
+    <child link="track_creator__left_pad14"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint14" type="fixed">
+    <parent link="track_creator__left_pad14"/>
+    <child link="track_creator__left_pad15"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint15" type="fixed">
+    <parent link="track_creator__left_pad15"/>
+    <child link="track_creator__left_pad16"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint16" type="fixed">
+    <parent link="track_creator__left_pad16"/>
+    <child link="track_creator__left_pad17"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint17" type="fixed">
+    <parent link="track_creator__left_pad17"/>
+    <child link="track_creator__left_pad18"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint18" type="fixed">
+    <parent link="track_creator__left_pad18"/>
+    <child link="track_creator__left_pad19"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint19" type="fixed">
+    <parent link="track_creator__left_pad19"/>
+    <child link="track_creator__left_pad20"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint20" type="fixed">
+    <parent link="track_creator__left_pad20"/>
+    <child link="track_creator__left_pad21"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint21" type="fixed">
+    <parent link="track_creator__left_pad21"/>
+    <child link="track_creator__left_pad22"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint22" type="fixed">
+    <parent link="track_creator__left_pad22"/>
+    <child link="track_creator__left_pad23"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint23" type="fixed">
+    <parent link="track_creator__left_pad23"/>
+    <child link="track_creator__left_pad24"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.65617  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint24" type="fixed">
+    <parent link="track_creator__left_pad24"/>
+    <child link="track_creator__left_pad25"/>
+    <origin xyz="0.0539 0     0" rpy="0      -0.51687  0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint25" type="fixed">
+    <parent link="track_creator__left_pad25"/>
+    <child link="track_creator__left_pad26"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint26" type="fixed">
+    <parent link="track_creator__left_pad26"/>
+    <child link="track_creator__left_pad27"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint27" type="fixed">
+    <parent link="track_creator__left_pad27"/>
+    <child link="track_creator__left_pad28"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint28" type="fixed">
+    <parent link="track_creator__left_pad28"/>
+    <child link="track_creator__left_pad29"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint29" type="fixed">
+    <parent link="track_creator__left_pad29"/>
+    <child link="track_creator__left_pad30"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint30" type="fixed">
+    <parent link="track_creator__left_pad30"/>
+    <child link="track_creator__left_pad31"/>
+    <origin xyz="0.0539 0     0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <joint name="track_creator__left_pad_joint31" type="fixed">
+    <parent link="track_creator__left_pad31"/>
+    <child link="track_creator__left_pad1"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="0" upper="0" effort="0" velocity="0"/>
+  </joint>
+  <link name="track_creator__base_link">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__base_link_collision">
+      <origin xyz="0   0   0.14" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.56 0.34 0.14"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__base_link_visual">
+      <origin xyz="0   0   0.14" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.56 0.34 0.14"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__drum1">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__drum1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__drum1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__drum2">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__drum2_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__drum2_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__drum3">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__drum3_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__drum3_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__drum4">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__drum4_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__drum4_visual">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.07" length="0.1"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad1">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad1_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad1_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad2">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad2_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad2_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad3">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad3_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad3_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad4">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad4_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad4_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad5">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad5_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad5_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad6">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad6_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad6_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad7">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad7_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad7_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad8">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad8_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad8_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad9">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad9_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad9_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad10">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad10_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad10_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad11">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad11_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad11_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad12">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad12_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad12_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad13">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad13_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad13_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad14">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad14_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad14_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad15">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad15_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad15_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad16">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad16_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad16_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad17">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad17_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad17_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad18">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad18_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad18_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad19">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad19_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad19_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad20">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad20_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad20_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad21">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad21_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad21_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad22">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad22_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad22_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad23">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad23_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad23_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad24">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad24_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad24_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad25">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad25_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad25_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad26">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad26_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad26_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad27">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad27_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad27_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad28">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad28_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad28_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad29">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad29_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad29_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad30">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad30_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad30_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__right_pad31">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__right_pad31_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__right_pad31_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad1">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad1_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad1_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad2">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad2_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad2_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad3">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad3_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad3_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad4">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad4_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad4_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad5">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad5_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad5_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad6">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad6_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad6_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad7">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad7_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad7_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad8">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad8_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad8_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad9">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad9_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad9_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad10">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad10_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad10_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad11">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad11_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad11_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad12">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad12_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad12_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad13">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad13_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad13_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad14">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad14_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad14_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad15">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad15_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad15_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad16">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad16_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad16_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad17">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad17_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad17_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad18">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad18_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad18_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad19">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad19_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad19_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad20">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad20_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad20_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad21">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad21_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad21_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad22">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad22_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad22_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad23">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad23_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad23_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad24">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad24_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad24_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad25">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad25_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad25_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad26">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad26_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad26_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad27">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad27_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad27_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad28">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad28_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad28_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad29">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad29_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad29_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad30">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad30_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad30_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="track_creator__left_pad31">
+    <inertial>
+      <mass value="0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+    <collision name="track_creator__left_pad31_collision">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </collision>
+    <visual name="track_creator__left_pad31_visual">
+      <origin xyz="0.02695 0      0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0431 0.1 0.001"/>
+      </geometry>
+    </visual>
+  </link>
+  
+ <joint name="imu_joint" type="fixed">
+  <parent link="track_creator__base_link"/>
+  <child link="imu_link"/>
+ <origin xyz="0.0 0 -0.022" rpy="0 0 0"/>
+ </joint>
+
+ <link name="imu_link"/>
+  
+</robot>
